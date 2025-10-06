@@ -8,7 +8,7 @@ export async function connectDB() {
   try {
     // Pour cet exemple, on simule une base de données en mémoire
     // Dans un environnement de production, utilisez une vraie URL MongoDB
-    const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/ho-host';
+    const url = process.env.MONGODB_URI || 'mongodb://localhost:27017/sampledb';
     
     // Simulation d'une connexion MongoDB
     logger.info('Simulation de connexion à MongoDB...');
@@ -20,10 +20,10 @@ export async function connectDB() {
       logs: []
     };
     
-    logger.info('✅ Base de données simulée initialisée avec succès');
+    logger.info(' Base de données simulée initialisée avec succès');
     return db;
   } catch (error) {
-    logger.error('❌ Erreur de connexion à la base de données:', error);
+    logger.error('Erreur de connexion à la base de données:', error);
     process.exit(1);
   }
 }
