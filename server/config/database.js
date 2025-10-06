@@ -6,7 +6,7 @@ let client
 
 export async function connectDB() {
   try {
-    const url = process.env.MONGODB_URI || "mongodb://localhost:27017/hothost"
+    const url = process.env.MONGODB_URI || "mongodb://localhost:27017/sampledb"
 
     logger.info(`Connexion à MongoDB: ${url}`)
 
@@ -26,10 +26,10 @@ export async function connectDB() {
 
     await createIndexes()
 
-    logger.info("✅ Connexion à MongoDB établie avec succès")
+    logger.info(" Connexion à MongoDB établie avec succès")
     return db
   } catch (error) {
-    logger.error("❌ Erreur de connexion à MongoDB:", error)
+    logger.error("Erreur de connexion à MongoDB:", error)
 
     logger.warn("🔄 Basculement vers la base de données simulée en mémoire")
     db = {
@@ -84,7 +84,7 @@ export async function connectDB() {
       }),
     }
 
-    logger.info("✅ Base de données simulée initialisée")
+    logger.info(" Base de données simulée initialisée")
     return db
   }
 }
@@ -113,9 +113,9 @@ async function createIndexes() {
     await db.collection("logs").createIndex({ timestamp: -1 })
     await db.collection("logs").createIndex({ userId: 1 })
 
-    logger.info("✅ Index de base de données créés")
+    logger.info(" Index de base de données créés")
   } catch (error) {
-    logger.warn("⚠️ Erreur lors de la création des index:", error.message)
+    logger.warn(" Erreur lors de la création des index:", error.message)
   }
 }
 
